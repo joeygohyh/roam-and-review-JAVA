@@ -1,0 +1,13 @@
+.refresh-container {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid #ddd; 
+    border-radius: 4px; 
+    cursor: pointer;
+  }
+  
+  .refresh-container i {
+    margin-right: 5px;
+  }
+  

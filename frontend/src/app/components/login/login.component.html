@@ -1,0 +1,95 @@
+<div class="card flex justify-content-center">
+  <h2>Login to your account</h2>
+</div>
+
+<div class="col-md-12">
+  <div class="card card-container">
+    <div>
+      <form
+        name="form"
+        (ngSubmit)="onSubmit()"
+        #f="ngForm"
+        novalidate
+        class="flex flex-column gap-3"
+      >
+        <div class="card flex justify-content-center">
+          <div class="flex flex-column gap-2">
+            <label for="username">Username:</label>
+            <input
+              type="text"
+              pInputText
+              id="username"
+              aria-describedby="username-help"
+              class="custom-input"
+              [(ngModel)]="form.username"
+              name="username"
+              required
+              #username="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && !username.valid }"
+            />
+            <div
+              style="color: red"
+              *ngIf="f.submitted && !username.valid"
+              class="invalid-feedback"
+            >
+              <div *ngIf="username.errors?.['required']">
+                Username is required
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card flex justify-content-center">
+          <div class="flex flex-column gap-2">
+            <label for="password">Password:</label>
+            <p-password
+              [(ngModel)]="form.password"
+              name="password"
+              required
+              minlength="6"
+              class="custom-input"
+              #password="ngModel"
+              [feedback]="false"
+              [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+            ></p-password>
+            <div
+              *ngIf="password.invalid && (password.dirty || f.submitted)"
+              class="invalid-feedback"
+            >
+              <div *ngIf="password.errors?.['required']">
+                Password is required
+              </div>
+              <div *ngIf="password.errors?.['minlength']">
+                Password must be at least 6 characters
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p></p>
+        </div>
+
+        <div class="card flex justify-content-center">
+          <button pButton pRipple [outlined]="true" [disabled]="!f.form.valid">
+            Login
+          </button>
+        </div>
+
+        <div>
+          <p></p>
+        </div>
+
+        <div class="card flex justify-content-center">
+          <div
+            style="color: red"
+            *ngIf="f.submitted && isLoginFailed"
+            class="alert alert-warning"
+          >
+            Login failed!<br />{{ errorMessage }}
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

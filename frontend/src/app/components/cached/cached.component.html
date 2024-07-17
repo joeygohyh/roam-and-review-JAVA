@@ -1,0 +1,85 @@
+
+<h4>
+  Search term: <code>{{ q }}</code>
+</h4>
+
+<div>
+  <button [outlined]="true" pButton pRipple type="button" [routerLink]="['/']">
+    Home
+  </button>
+  <button
+    [outlined]="true"
+    pButton
+    pRipple
+    type="button"
+    [routerLink]="['/search']"
+  >
+    Search again
+  </button>
+</div>
+
+<hr />
+
+<div *ngIf="result$ | async as results; else noResult">
+  <div *ngIf="results.parks.length > 0; else noResult">
+    <div class="grid grid-nogutter">
+      <div *ngFor="let park of results.parks" class="col-12">
+        <div
+          class="flex flex-column sm:flex-row sm:align-items-center p-4 gap-3"
+        >
+          <div class="md:w-10rem relative">
+            <a [routerLink]="['/park', park.parkCode]">
+              <img
+                class="block xl:block mx-auto border-round w-full"
+                [src]="park.image"
+                [alt]="park.fullName"
+              />
+            </a>
+          </div>
+          <div
+            class="flex flex-column md:flex-row justify-content-between md:align-items-center flex-1 gap-4"
+          >
+            <div
+              class="flex flex-row md:flex-column justify-content-between align-items-start gap-2"
+            >
+              <div class="flex flex-row align-items-center gap-2">
+                <a
+                  [routerLink]="['/park', park.parkCode]"
+                  class="text-lg font-medium text-900 mt-2"
+                >
+                  {{ park.fullName }}
+                </a>
+                <div class="surface-100 p-1" style="border-radius: 30px">
+                  <div
+                    class="surface-0 flex align-items-center gap-2 justify-content-center py-1 px-2"
+                    style="
+                      border-radius: 30px;
+                      box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.04),
+                        0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+                    "
+                  >
+                    <!-- <span class="text-900 font-medium text-sm">{{ park.rating }}</span> -->
+                    <i class="pi pi-comments text-yellow-500"></i>
+                  </div>
+                </div>
+              </div>
+              <span class="font-medium text-secondary text-sm">{{
+                park.description
+              }}</span>
+            </div>
+            <div class="flex flex-column md:align-items-end gap-5">
+              <!-- <span class="text-xl font-semibold text-900">{{ park.price | currency }}</span> -->
+              <div class="flex flex-row-reverse md:flex-row gap-2">
+                <p-button icon="pi pi-heart" [outlined]="true"></p-button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noResult>
+  <h2>No results found.</h2>
+</ng-template>

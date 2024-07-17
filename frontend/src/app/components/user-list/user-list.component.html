@@ -1,0 +1,81 @@
+<div class="card flex justify-content-center">
+  <h2>{{ username }}'s Reviews</h2>
+</div>
+
+
+<div class="card">
+  <p-dataView #dv [value]="reviews">
+    <ng-template pTemplate="list" let-reviews>
+      <div class="grid grid-nogutter">
+        <div
+          class="col-12"
+          *ngFor="let review of reviews; let first = first"
+          class="col-12"
+        >
+          <div
+            class="flex flex-column sm:flex-row sm:align-items-center p-4 gap-3"
+            [ngClass]="{ 'border-top-1 surface-border': !first }"
+          >
+            <div class="md:w-10rem relative">
+              <img
+                class="block xl:block mx-auto border-round w-full"
+                [src]="review.reviewUrl"
+              />
+            </div>
+            <div
+              class="flex flex-column md:flex-row justify-content-between md:align-items-center flex-1 gap-4"
+            >
+              <div
+                class="flex flex-row md:flex-column justify-content-between align-items-start gap-2"
+              >
+                <div class="flex flex-row align-items-center gap-2">
+                  <p><i class="pi pi-map-marker"> </i> {{ review.location }}</p>
+                  <div
+                    class="surface-100 p-1"
+                    style="border-radius: 30px"
+                  ></div>
+                </div>
+                <span class="font-medium text-secondary text-sm">
+                  <p>{{ review.review }}</p></span
+                >
+                <br />
+                <span class="font-bold"
+                  ><small>Review by: {{ review.username }}</small></span
+                >
+              </div>
+
+              <div class="flex flex-column md:align-items-end gap-5">
+          
+
+                <i type="button" class="pi pi-trash" (click)="deleteReview(review.id)" > </i>
+
+
+                
+                <p><i class="pi pi-heart"> </i> {{ review.likes }}</p>
+
+                <div class="flex flex-row-reverse md:flex-row gap-2">
+                  <button
+                    pButton
+                    [outlined]="true"
+                    type="button"
+                    (click)="likeReview(review.id.toString())"
+                  >
+                    Like
+                  </button>
+                  <button
+                    pButton
+                    [outlined]="true"
+                    type="button"
+                    (click)="unlikeReview(review.id.toString())"
+                  >
+                    Unlike
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataView>
+</div>

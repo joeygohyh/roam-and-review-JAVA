@@ -1,0 +1,101 @@
+<div class="container">
+  <header class="jumbotron">
+    <div class="card flex justify-content-center">
+      <p>
+        <img
+          src="{{ currentUser.profileUrl }}"
+          alt="Profile Picture"
+          class="profile-picture"
+        />
+      </p>
+    </div>
+
+    <div class="card flex justify-content-center">
+      <h2>
+        <strong>{{ currentUser.username }}</strong>
+      </h2>
+    </div>
+  </header>
+
+  <div class="card flex justify-content-center" *ngIf="!isEditingUsername">
+    <button pButton [outlined]="true" (click)="toggleEditUsername()">
+      Edit Username
+    </button>
+  </div>
+
+
+  <div class="card flex justify-content-center" *ngIf="!isEditingPassword">
+    <button pButton [outlined]="true" (click)="toggleEditPassword()">
+      Edit Password
+    </button>
+  </div>
+
+
+
+  <div class="card flex justify-content-center" *ngIf="isEditingUsername">
+    <input
+      type="text"
+      id="newUsername"
+      name="newUsername"
+      [(ngModel)]="newUsername"
+    />
+    <button pButton [outlined]="true" (click)="onUpdateUsername(newUsername)">
+      Update Username
+    </button>
+    <button pButton [outlined]="true" (click)="toggleEditUsername()">Cancel</button>
+  </div>
+  <div class="card flex justify-content-center" *ngIf="isEditingUsername">
+    <div *ngIf="errorMessageUsername" class="error-message">
+      {{ errorMessageUsername }}
+    </div>
+  </div>
+
+
+  <div class="card flex justify-content-center" *ngIf="isEditingPassword">
+    <input
+      type="text"
+      id="newPassword"
+      name="newPassword"
+      [(ngModel)]="newPassword"
+    />
+    <button pButton [outlined]="true" (click)="onUpdatePassword(newPassword)">
+      Update Password
+    </button>
+    <button pButton [outlined]="true" (click)="toggleEditPassword()">Cancel</button>
+  </div>
+  <div class="card flex justify-content-center" *ngIf="isEditingPassword">
+    <div *ngIf="errorMessagePassword" class="error-message">
+      {{ errorMessagePassword }}
+    </div>
+  </div>
+
+
+  <div class="card flex justify-content-center">
+    <p>
+      <strong>Name:</strong>
+      {{ currentUser.name }}
+    </p>
+  </div>
+  <div class="card flex justify-content-center">
+    <p>
+      <strong>Email:</strong>
+      {{ currentUser.email }}
+    </p>
+  </div>
+
+  <div class="card flex justify-content-center">
+    <p>
+      <strong>Country:</strong>
+      {{ currentUser.country }}
+    </p>
+  </div>
+
+  <div class="card flex justify-content-center">
+    <p>
+      <strong>Gender:</strong>
+      {{ currentUser.gender }}
+    </p>
+  </div>
+
+
+</div>

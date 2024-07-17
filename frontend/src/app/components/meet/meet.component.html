@@ -1,0 +1,41 @@
+<div class="card flex justify-content-center">
+  <h2>Find a hiking buddy</h2>
+</div>
+
+<div class="card flex justify-content-center">
+    <p style="font-style: italic; color: red;">Caution: Beware of impersonators posing as others.</p>
+  </div>
+
+<div class="card flex justify-content-center">
+  <form [formGroup]="form" (ngSubmit)="click()">
+
+    <p-iconField iconPosition="left">
+        <p-inputIcon styleClass="pi pi-user" />
+        <input formControlName="name" placeholder="Your name" required type="text" pInputText />
+    </p-iconField>
+
+    <p-iconField iconPosition="left">
+        <p-inputIcon styleClass="pi pi-comment" />
+        <input formControlName="content" placeholder="Message" required type="text" pInputText />
+    </p-iconField>
+
+
+    <button pButton [outlined]="true" type="submit" [disabled]="form.invalid">Send</button>
+  </form>
+</div>
+
+<div class="card flex justify-content-center">
+  <div id="chat-container">
+    <p-messages
+      [(value)]="primeNgMessages"
+      [enableService]="false"
+      [closable]="false"
+      p-message-summary="summary"
+      p-message-detail="detail"
+    >
+
+  
+    </p-messages>
+
+  </div>
+</div>

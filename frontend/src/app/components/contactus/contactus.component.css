@@ -1,0 +1,19 @@
+
+
+  /* contact-us.component.css */
+.container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .card {
+    width: 100%;
+    max-width: 600px; /* Adjust the max-width as needed */
+    margin: 0 auto;
+  }
+  
+  .wide-input {
+    width: 500px; /* Set to 100% to fill the container */
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+  }
+  

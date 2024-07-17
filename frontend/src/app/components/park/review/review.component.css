@@ -1,0 +1,40 @@
+.full-width {
+    width: 100%;
+  }
+  
+  .form-group-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .left-side, .right-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .form-group-horizontal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .form-group {
+    margin-bottom: 1em;
+  }
+  
+  .error-message {
+    color: red;
+  }
+  
+  .preview-container {
+    margin-top: 0.5em;
+  }
+  
+  .preview-image {
+    max-width: 250px;
+    height: auto;
+  }
+  
+

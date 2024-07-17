@@ -1,0 +1,40 @@
+<div class="card" *ngIf="campgrounds.length > 0; else noCampgrounds">
+  <p-carousel
+    [value]="campgrounds"
+    [numVisible]="4"
+    [numScroll]="1"
+    [circular]="false"
+    class="custom-carousel"
+    [responsiveOptions]="responsiveOptions"
+  >
+    <ng-template margin="0" let-campground pTemplate="item">
+      <div
+        class="activity-box border-1 surface-border border-round align-items-center"
+      >
+        <div class="mb-3">
+          <div class="relative mx-auto">
+            <img
+              [src]="campground.image || 'default-image-url'"
+              [alt]="campground.name"
+              class="thumbnail-image border-round"
+            />
+          </div>
+        </div>
+        <div class="mt-0 font-semibold text-center">
+          {{ campground.name }}
+          <hr />
+
+        </div>
+        <div class="flex justify-content-between align-items-center">
+          <div class="mb-3 font-small text-justify">
+            {{ campground.description }}
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>
+
+<ng-template #noCampgrounds>
+  <p>No campgrounds found.</p>
+</ng-template>

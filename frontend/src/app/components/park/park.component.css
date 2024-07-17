@@ -1,0 +1,37 @@
+.card {
+    padding: 1rem; 
+    margin: 0; 
+  }
+  
+  .flex {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap; 
+  }
+  
+  .p-accordion .p-accordion-tab {
+    margin: 0; 
+    padding: 0; 
+  }
+  
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; 
+  }
+  
+  .header-container h1 {
+    margin: 0; 
+  }
+  
+  .header-container p-button {
+    margin-left: 1rem; 
+  }
+  
+  .about-text {
+    font-size: 1.25rem; 
+    line-height: 1.6;   
+    text-align: center;
+}
+

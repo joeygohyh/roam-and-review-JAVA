@@ -1,0 +1,48 @@
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  .card {
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+  }
+  
+  .search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+   
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 10px;
+  }
+  
+  @media (min-width: 900px) {
+    .search-container {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    input[pInputText] {
+        width: 80%;
+      }
+  }
+  
+input[pInputText] {
+    width: 100%;
+    width: 500px;
+    flex: 1;
+  }
+  
+button[pButton] {
+    width: auto;
+    white-space: nowrap;
+  }
+  

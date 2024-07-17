@@ -1,0 +1,68 @@
+<div class="card flex justify-content-center">
+  <h2>News Feed</h2>
+</div>
+
+<div class="card flex justify-content-center">
+  <p>See what's up! Get inspired!</p>
+</div>
+
+<div>
+  <div *ngFor="let review of reviews">
+    <img [src]="review.reviewUrl" class="review-image" />
+
+    <div class="card flex justify-content-center">
+      <p><i class="pi pi-map-marker"> </i> {{ review.location }}</p>
+    </div>
+
+    <div class="card flex justify-content-center">
+      <small>
+        <i class="pi pi-heart custom-heart-icon"> </i>
+        {{ review.likes }}</small
+      >
+
+      <div
+        class="flex flex-row-reverse md:flex-row gap-2"
+        style="margin-left: 10px"
+      >
+        <button
+          pButton
+          [outlined]="true"
+          type="button"
+          (click)="likeReview(review.id.toString())"
+          style="font-size: 12px; padding: 5px 10px"
+        >
+          Like
+        </button>
+        <button
+          pButton
+          [outlined]="true"
+          type="button"
+          (click)="unlikeReview(review.id.toString())"
+          style="font-size: 12px; padding: 5px 10px"
+        >
+          Unlike
+        </button>
+      </div>
+    </div>
+
+    <div class="card flex justify-content-center text-justify">
+      <p>{{ review.review }}</p>
+    </div>
+
+    <div class="card flex justify-content-center">
+      <p>
+        <small>By: {{ review.username }}</small>
+      </p>
+    </div>
+
+    <div class="card flex justify-content-center">
+      <p-chip>
+        <small [routerLink]="['/park', review.parkCode]">
+          <i class="pi pi-info-circle"> </i> {{ review.parkCode }}</small
+        >
+      </p-chip>
+    </div>
+
+    <hr class="custom-hr" />
+  </div>
+</div>

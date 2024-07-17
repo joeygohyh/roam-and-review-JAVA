@@ -1,0 +1,127 @@
+<div class="card flex justify-content-center">
+  <p-toast></p-toast>
+  <p-confirmDialog #cd>
+    <ng-template pTemplate="headless" let-message>
+      <div
+        class="flex flex-column align-items-center p-5 surface-overlay border-round"
+      >
+        <div
+          class="border-circle bg-primary inline-flex justify-content-center align-items-center h-6rem w-6rem"
+        >
+          <i class="pi pi-question text-5xl"></i>
+        </div>
+        <span class="font-bold text-2xl block mb-2 mt-4">{{
+          message.header
+        }}</span>
+        <p class="mb-0">{{ message.message }}</p>
+        <div class="flex align-items-center gap-2 mt-4">
+          <button
+            pButton
+            label="Login"
+            (click)="cd.accept()"
+            class="w-8rem"
+          ></button>
+          <button
+            pButton
+            label="Cancel"
+            (click)="cd.reject()"
+            class="p-button-outlined w-8rem"
+          ></button>
+        </div>
+      </div>
+    </ng-template>
+  </p-confirmDialog>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" enctype="multipart/form-data" class="full-width">
+    <div class="form-group-container">
+      <div class="left-side">
+        <div class="form-group-horizontal">
+          <div class="form-group">
+            <label>Username :</label>
+            <br />
+            <code>{{ usernamePlaceholder }}</code>
+          </div>
+
+          <div class="form-group">
+            <label>Country :</label>
+            <br />
+            <code>{{ countryPlaceholder }}</code>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="location">Location :</label>
+          <br />
+          <input type="text" id="location" formControlName="location" />
+          <div
+            *ngIf="
+              form.get('location')?.invalid && form.get('location')?.touched
+            "
+            class="error-message"
+          >
+            <div *ngIf="form.get('location')?.hasError('required')">
+              Location is required!
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="review">Review :</label>
+          <textarea
+            id="review"
+            rows="5"
+            cols="45"
+            pInputTextarea
+            formControlName="review"
+          ></textarea>
+          <div
+            *ngIf="form.get('review')?.invalid && form.get('review')?.touched"
+            class="error-message"
+          >
+            <div *ngIf="form.get('review')?.hasError('required')">
+              Review is required
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-side">
+        <div class="form-group">
+          <label for="file">File :</label>
+          <input
+            id="file"
+            formControlName="file"
+            type="file"
+            (change)="onFileChange($event)"
+          />
+          <div
+            *ngIf="form.get('file')?.invalid && form.get('file')?.touched"
+            class="error-message"
+          >
+            <div *ngIf="form.get('file')?.hasError('required')">
+              File is required
+            </div>
+          </div>
+        </div>
+
+        <!-- File preview -->
+        <div *ngIf="previewUrl" class="preview-container">
+          <h3>Picture Preview:</h3>
+          <img [src]="previewUrl" class="preview-image" />
+        </div>
+      </div>
+    </div>
+
+    <br />
+    <div class="card flex justify-content-start">
+      <button
+        pButton
+        pRipple
+        label="Submit"
+        class="p-button-success"
+        type="submit"
+        [disabled]="form.invalid"
+      ></button>
+    </div>
+  </form>
+</div>

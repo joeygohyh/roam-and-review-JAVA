@@ -1,0 +1,65 @@
+
+
+<div class="container">
+  <div class="card flex justify-content-center">
+    <h1>Discover. Explore. Review.</h1>
+  </div>
+
+  <div class="card flex justify-content-center">
+    <p>
+      Are you ready to immerse yourself in the breathtaking beauty of nature?
+    </p>
+  </div>
+
+  <div class="card flex justify-content-center">
+    <p>Look no further, search for a National Park now!</p>
+  </div>
+
+  <form [formGroup]="searchForm" (submit)="search()">
+    <div class="flex search-container justify-content-center">
+      <p-floatLabel>
+        <input
+          id="q"
+          type="text"
+          pInputText
+          formControlName="q"
+          placeholder="yosemite? yellowstone? alcatraz?"
+        />
+        <label for="q">Enter national park here</label>
+      </p-floatLabel>
+
+      <div class="button-group">
+        <button
+          pButton
+          pRipple
+          type="submit"
+          [disabled]="searchForm.invalid"
+          [outlined]="true"
+        >Search</button>
+
+        <button pButton pRipple [outlined]="true" (click)="viewAllParks()">
+          View All Parks
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div class="card flex justify-content-center"></div>
+
+  <div
+    *ngIf="(savedSearches$ | async)?.length"
+    class="items card flex justify-content-center"
+  >
+    <code class="card flex justify-content-left">Past Searches:</code>
+  </div>
+
+  <div
+    *ngFor="let r of savedSearches$ | async; let i = index"
+    class="items card flex justify-content-center"
+  >
+    <a [routerLink]="['/cached', r]">
+      <small>{{ r }}</small>
+    </a>
+  </div>
+</div>
+

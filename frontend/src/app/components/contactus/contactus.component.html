@@ -1,0 +1,94 @@
+<!-- contact-us.component.html -->
+
+<div class="card flex justify-content-center">
+  <h2>Contact Us</h2>
+</div>
+
+<div class="card flex justify-content-center text-center">
+  <p>Is something not working? Is there a feature you are looking for?</p>
+</div>
+<div class="card flex justify-content-center text-center">
+  <p>Send us your feedback now!</p>
+</div>
+
+<div class="card flex justify-content-center">
+  <h4></h4>
+</div>
+
+<div class="card flex justify-content-center">
+  <form
+    id="contact-form"
+    (ngSubmit)="sendEmail(contactForm)"
+    #contactForm="ngForm"
+  >
+    <!-- <input type="hidden" name="contact_number" value="697483" /> -->
+
+    <div>
+      <label for="user_name">Name:</label>
+      <br />
+      <input
+        pInputText
+        type="text"
+        id="user_name"
+        name="user_name"
+        ngModel
+        required
+        class="wide-input"
+      />
+    </div>
+    <br />
+
+    <div>
+      <label for="user_email">Email:</label>
+      <br />
+      <input
+        pInputText
+        type="email"
+        id="user_email"
+        name="user_email"
+        ngModel
+        required
+        class="wide-input"
+      />
+    </div>
+    <br />
+
+    <div>
+      <label for="message">Message:</label>
+      <br />
+      <textarea
+        pInputText
+        id="message"
+        name="message"
+        ngModel
+        required
+        class="wide-input"
+      ></textarea>
+    </div>
+    <br />
+
+    <div class="card flex justify-content-center">
+      <button pButton [outlined]="true" type="submit">Send</button>
+    </div>
+  </form>
+</div>
+
+<br />
+<br />
+
+<div class="card flex justify-content-center">
+  <h2>Buy me a coffee?</h2>
+</div>
+
+<div class="card flex justify-content-center text-center">
+  <p>
+    If you like my work on this website and want to say thanks, or encourage me
+    to do more, you can buy me a coffee!
+  </p>
+</div>
+
+<div class="card flex justify-content-center">
+  <h4></h4>
+</div>
+
+<app-coffee></app-coffee>

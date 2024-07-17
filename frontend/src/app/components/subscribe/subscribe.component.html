@@ -1,0 +1,57 @@
+<div class="card flex justify-content-center">
+  <h2>Subscribe to our Newsletter</h2>
+</div>
+
+<div class="card flex justify-content-center">
+  <p>
+    Get National Park recommendations and must-see places at your fingertips!
+  </p>
+</div>
+
+
+<div class="card flex justify-content-center">
+    <p style="font-style: italic; color: red;">Stay tuned, first newsletter coming Dec 2024!!</p>
+  </div>
+  
+
+<div class="card flex justify-content-center">
+  <h4></h4>
+</div>
+
+<div class="card flex justify-content-center">
+  <form (ngSubmit)="subscribe()">
+    <label for="name">Name:</label>
+    <br />
+    <input
+    class="wide-input"
+      pInputText
+      type="text"
+      id="name"
+      name="name"
+      [(ngModel)]="formData.name"
+      required
+    />
+
+    <br />
+    <br>
+    <label for="email">Email:</label>
+    <br />
+    <input
+    class="wide-input"
+      pInputText
+      type="email"
+      id="email"
+      name="email"
+      [(ngModel)]="formData.email"
+      required
+    />
+
+    <br />
+    <br />
+<div class="card flex justify-content-center">
+
+    <button [outlined]="true" pButton type="submit">Subscribe</button>
+</div>
+  </form>
+
+</div>

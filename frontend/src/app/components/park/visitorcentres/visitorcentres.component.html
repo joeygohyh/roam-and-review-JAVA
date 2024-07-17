@@ -1,0 +1,41 @@
+
+  <div class="card" *ngIf="visitorCentres.length > 0; else noVisitorCentres">
+    <p-carousel
+      [value]="visitorCentres"
+      [numVisible]="4"
+      [numScroll]="1"
+      [circular]="false" 
+      class="custom-carousel"
+    [responsiveOptions]="responsiveOptions"
+
+    >
+      <ng-template margin=0 let-visitorCentre pTemplate="item">
+        <div class="activity-box border-1 surface-border border-round align-items-center">
+          <div class="mb-3">
+            <div class="relative mx-auto">
+              <img
+                [src]="visitorCentre.image || 'default-image-url'"
+                [alt]="visitorCentre.name"
+                class="thumbnail-image border-round"
+              />
+            </div>
+          </div>
+          <div class="mt-0 font-semibold text-center">
+            {{ visitorCentre.name }}
+          <hr />
+
+          </div>
+          <div class="flex justify-content-between align-items-center">
+            <div class="mb-3 font-small text-justify">
+              {{ visitorCentre.description }}
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+  
+  <ng-template #noVisitorCentres>
+    <p>No visitor centres found.</p>
+  </ng-template>
+  
