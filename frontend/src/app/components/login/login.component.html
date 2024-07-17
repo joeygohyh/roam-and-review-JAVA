@@ -51,6 +51,8 @@
               #password="ngModel"
               [feedback]="false"
               [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+              [inputStyle]="{'width':'400px'}"
+
             ></p-password>
             <div
               *ngIf="password.invalid && (password.dirty || f.submitted)"

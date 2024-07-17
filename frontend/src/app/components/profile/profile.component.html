@@ -23,14 +23,11 @@
     </button>
   </div>
 
-
   <div class="card flex justify-content-center" *ngIf="!isEditingPassword">
     <button pButton [outlined]="true" (click)="toggleEditPassword()">
       Edit Password
     </button>
   </div>
-
-
 
   <div class="card flex justify-content-center" *ngIf="isEditingUsername">
     <input
@@ -42,7 +39,9 @@
     <button pButton [outlined]="true" (click)="onUpdateUsername(newUsername)">
       Update Username
     </button>
-    <button pButton [outlined]="true" (click)="toggleEditUsername()">Cancel</button>
+    <button pButton [outlined]="true" (click)="toggleEditUsername()">
+      Cancel
+    </button>
   </div>
   <div class="card flex justify-content-center" *ngIf="isEditingUsername">
     <div *ngIf="errorMessageUsername" class="error-message">
@@ -50,25 +49,33 @@
     </div>
   </div>
 
-
   <div class="card flex justify-content-center" *ngIf="isEditingPassword">
-    <input
+    <!-- <input
       type="text"
       id="newPassword"
       name="newPassword"
       [(ngModel)]="newPassword"
-    />
+    /> -->
+
+    <p-password
+      type="text"
+      id="newPassword"
+      name="newPassword"
+      [(ngModel)]="newPassword"
+    ></p-password>
+
     <button pButton [outlined]="true" (click)="onUpdatePassword(newPassword)">
       Update Password
     </button>
-    <button pButton [outlined]="true" (click)="toggleEditPassword()">Cancel</button>
+    <button pButton [outlined]="true" (click)="toggleEditPassword()">
+      Cancel
+    </button>
   </div>
   <div class="card flex justify-content-center" *ngIf="isEditingPassword">
     <div *ngIf="errorMessagePassword" class="error-message">
       {{ errorMessagePassword }}
     </div>
   </div>
-
 
   <div class="card flex justify-content-center">
     <p>
@@ -96,6 +103,4 @@
       {{ currentUser.gender }}
     </p>
   </div>
-
-
 </div>

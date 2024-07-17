@@ -16,10 +16,9 @@
     </p-fieldset>
   </div>
 
-  <div class="card flex justify-content-center"></div>
-
+<!-- 
   <div class="flex">
-    <!-- Left column for operating hours and address -->
+
     <div class="card flex flex-column justify-content-start">
       <p-fieldset legend="Operating Hours">
         <p>{{ park.operatingHours.description }}</p>
@@ -52,7 +51,7 @@
       </p-fieldset>
     </div>
 
-    <!-- Right column for images -->
+
     <div class="card flex justify-content-center">
       <p-fieldset legend="Images">
         <div class="card" style="background-color: white">
@@ -89,7 +88,87 @@
       </p-fieldset>
     </div>
   </div>
+</div> -->
+
+<!-- Parent container for main content -->
+<div class="flex-container">
+  <!-- Left column for operating hours and address -->
+  <div class="left-column">
+    <div class="card flex flex-column justify-content-start">
+      <p-fieldset legend="Operating Hours">
+        <p>{{ park.operatingHours.description }}</p>
+        <ul>
+          <li>Monday: {{ park.operatingHours.monday }}</li>
+          <li>Tuesday: {{ park.operatingHours.tuesday }}</li>
+          <li>Wednesday: {{ park.operatingHours.wednesday }}</li>
+          <li>Thursday: {{ park.operatingHours.thursday }}</li>
+          <li>Friday: {{ park.operatingHours.friday }}</li>
+          <li>Saturday: {{ park.operatingHours.saturday }}</li>
+          <li>Sunday: {{ park.operatingHours.sunday }}</li>
+        </ul>
+      </p-fieldset>
+
+      <p-fieldset legend="Getting Here">
+        <p>{{ park.address.line1 }}</p>
+        <p>
+          {{ park.address.city }}, {{ park.address.stateCode }}
+          {{ park.address.postalCode }}
+          <!-- {{park.latitude}} -->
+          <!-- {{park.longitude}} -->
+        </p>
+
+        <google-map height="300px" width="300px" [options]="mapOptions">
+          @for (location of locations; track location) {
+          <map-advanced-marker
+            #markerElem="mapAdvancedMarker"
+            [position]="{ lat: location.lat, lng: location.lng }"
+          />
+          }
+        </google-map>
+      </p-fieldset>
+    </div>
+  </div>
+
+  <!-- Right column for images -->
+  <div class="right-column">
+    <div class="card flex justify-content-start">
+      <p-fieldset legend="Images">
+        <div class="card" style="background-color: white">
+          <p-galleria
+            [value]="galleriaImages"
+            [responsiveOptions]="responsiveOptions"
+            [containerStyle]="{
+              margin: '20px',
+              padding: '10px',
+              height: '470px',
+              'max-width': '500px',
+              'background-color': '#f0f0f0'
+            }"
+            [numVisible]="5"
+            class="custom-galleria"
+          >
+            <ng-template pTemplate="item" let-item>
+              <img
+                [src]="item.itemImageSrc"
+                style="max-width: 100%; max-height: 300px; min-height: 300px"
+              />
+            </ng-template>
+            <ng-template pTemplate="thumbnail" let-item>
+              <div class="thumbnail-container">
+                <img
+                  style="max-width: 100%; max-height: 100%"
+                  [src]="item.thumbnailImageSrc"
+                  class="thumbnail-image"
+                />
+              </div>
+            </ng-template>
+          </p-galleria>
+        </div>
+      </p-fieldset>
+    </div>
+  </div>
 </div>
+
 
 <div>
   <div>

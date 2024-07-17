@@ -47,7 +47,8 @@ export class MeetComponent implements OnInit {
       severity: 'secondary', 
       summary: `${msg.name}:`,
       icon: 'pi pi-user',
-      detail: `${msg.content} --------- [${msg.date}]`, 
+      // detail: `${msg.content} --------- [${msg.date}]`, 
+      detail: `${msg.content}`, 
 
       escape: false // Allow HTML tags to be rendered
 

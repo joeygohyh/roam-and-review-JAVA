@@ -104,6 +104,8 @@
               class="custom-input"
               #password="ngModel"
               [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+              [inputStyle]="{'width':'400px'}"
+
             ></p-password>
             <div
               style="color: red"

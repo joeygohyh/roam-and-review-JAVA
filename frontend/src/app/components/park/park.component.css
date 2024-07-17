@@ -35,3 +35,37 @@
     text-align: center;
 }
 
+
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  flex-wrap: wrap; 
+}
+
+.left-column,
+.right-column {
+  flex: 1;
+  min-width: 300px; 
+}
+
+.card {
+  padding: 10px;
+  border-radius: 4px;
+}
+
+@media (max-width: 1200px) {
+  .flex-container {
+    flex-direction: column;
+  }
+
+  .right-column {
+    order: 2; 
+  }
+
+  .left-column {
+    order: 1; 
+  }
+}

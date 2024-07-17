@@ -72,18 +72,17 @@ public class WebSecurityConfig {
           .requestMatchers("/api/account/**")
           .permitAll()
           .requestMatchers("/api/coffee").permitAll()
-          // .requestMatchers("/api/addReview")
-          // .permitAll()
+       
           .requestMatchers(HttpMethod.GET, "/api/getAllReviews/**")
-          .permitAll() // Permit GET requests to /api/getAllReviews
+          .permitAll() 
           .requestMatchers(HttpMethod.GET, "/api/getReviews/**")
-          .permitAll() // Permit GET requests to /api/getAllReviews
+          .permitAll() 
           .requestMatchers(HttpMethod.POST, "/api/addReview")
-          .authenticated() // Require authentication for POST requests to /api/addReview
+          .authenticated() 
           .requestMatchers(HttpMethod.POST, "/api/likeReview")
-          .authenticated() // Require authentication for POST requests to /api/addReview
+          .authenticated() 
           .requestMatchers(HttpMethod.POST, "/api/unlikeReview")
-          .authenticated() // Require authentication for POST requests to /api/addReview
+          .authenticated() 
           .anyRequest()
           .permitAll() // Permit all other requests
       );
